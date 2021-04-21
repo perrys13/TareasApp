@@ -1,27 +1,23 @@
 import React from "react";
 
-const Form = (props) =>{
+const Form = ({setInputText, tareas , setTareas ,inputText}) =>{
     const inputTextHandler = (e) =>{
-        props.setInputText(e.target.value);
+        setInputText(e.target.value);
+    }
+    
+    const submitTareaHandler = (e) =>{
+        e.preventDefault();
+        setTareas([...tareas, {text:inputText , completado:false , id: Math.random()*10000}]);
+        setInputText("");
     }
 
     
     return(
         <div>
-            <header><h1>Hola mundo!</h1></header>
-            <form>
-                <input onChange={inputTextHandler} type="text" className="todo-input" />
-                <button className="todo-button" type="submit">
-                    <i className="fas fa-plus-square"></i>
-                </button>
-                <div className="select">
-                    <select name="todos" className="filter-todo">
-                        <option value="select">Select</option>
-                        <option value="all">All</option>
-                        <option value="completed">Completed</option>
-                        <option value="uncompleted">Uncompleted</option>
-                    </select>
-                </div>
+            
+            <form className="form">
+                <input value={inputText} onChange={inputTextHandler} type="text" className="text" placeholder="Ingrese tarea" />
+                <button className="submit" onClick={submitTareaHandler}><i className="fas fa-plus-square"></i></button>
              </form>
         </div>
     )
