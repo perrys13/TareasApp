@@ -58,7 +58,6 @@ header {
 }
 
 
-
 .submit:hover{
   background-color: hsl(185, 85%, 3%);
   color:white;
@@ -80,7 +79,8 @@ header {
   min-width:15%;
   margin:10px;
   padding:0 10px;
-  border-radius: 5px; 
+  border-radius: 5px;
+  word-wrap: break-word; 
 }
 
 .btn-completado , .btn-eliminar {
