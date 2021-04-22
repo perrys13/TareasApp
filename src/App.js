@@ -11,7 +11,7 @@ function App() {
   return (
 
     <div className="App">
-      <header><h1>Tareas App </h1></header>
+      <header><h1>iTareas</h1></header>
       <Form setInputText={setInputText} inputText={inputText} tareas={tareas} setTareas={setTareas} />
       <ListaTareas tareas={tareas} setTareas={setTareas}/>
     </div>
