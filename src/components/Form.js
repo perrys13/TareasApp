@@ -7,8 +7,13 @@ const Form = ({setInputText, tareas , setTareas ,inputText}) =>{
     
     const submitTareaHandler = (e) =>{
         e.preventDefault();
+        if (inputText===""){
+            alert("ingrese algo");
+        }
+        else{
         setTareas([...tareas, {text:inputText , completado:false , id: Math.random()*10000}]);
         setInputText("");
+        }
     }
 
     
@@ -16,7 +21,7 @@ const Form = ({setInputText, tareas , setTareas ,inputText}) =>{
         <div>
             
             <form className="form">
-                <input value={inputText} onChange={inputTextHandler} type="text" className="text" placeholder="Ingrese tarea" />
+                <input value={inputText} onChange={inputTextHandler} type="text" className="text" placeholder="Ingrese tarea"  required/>
                 <button className="submit" onClick={submitTareaHandler}><i className="fas fa-plus-square"></i></button>
              </form>
         </div>
