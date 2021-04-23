@@ -5,8 +5,10 @@ import ListaTareas from  './components/ListaTareas';
 import React,{useState} from "react";
 
 function App() {
-  const [inputText, setInputText] = useState("");
-  const [tareas,setTareas]=useState([]);
+  const [descripcion, setDescripcion] = useState("");
+  const [listaTarea,setListaTarea]=useState([]);
+  const [id,setId]=useState(0)
+  const [edicion,setEdicion]=useState(false);
   
   
 
@@ -15,9 +17,9 @@ function App() {
     <div className="App">
       <header><h1>iTareas</h1></header>
 
-      <Form setInputText={setInputText} inputText={inputText} tareas={tareas} setTareas={setTareas}/>
+      <Form descripcion={descripcion} setDescripcion={setDescripcion} listaTarea={listaTarea} setListaTarea={setListaTarea} setId={setId} edicion={edicion}/>
 
-      <ListaTareas tareas={tareas} setTareas={setTareas} setInputText={setInputText} inputText={inputText}/>
+      <ListaTareas listaTarea={listaTarea} setListaTarea={setListaTarea} edicion={edicion} setEdicion={setEdicion} setDescripcion={setDescripcion} setId={setId} id={id} descripcion={descripcion}/>
     </div>
   );
 }

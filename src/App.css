@@ -105,8 +105,12 @@ header {
   opacity: 0.5;
 }
 
-.editando {
-  background-color: aquamarine;
+.editado {
+  background-color: rgb(11, 124, 230);
+}
+
+.item-tareas-editado{
+  opacity: 0.5;
 }
 
 

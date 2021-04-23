@@ -1,21 +1,25 @@
 import React from "react";
 import Tarea from "./Tarea";
 
-const ListaTareas = ({tareas , setTareas , setInputText , inputText}) => {
+const ListaTareas = ({listaTarea,setListaTarea,setEdicion,setDescripcion,setId,id,descripcion,edicion}) => {
     
     return (  
     <div className="caja-lista-tareas">
         <ul className="lista-tareas">
-            {tareas.map(tarea => (
-            <Tarea
-             inputText={inputText}
-             setInputText={setInputText}
-             tareas={tareas}
-             setTareas={setTareas}
-             key={tarea.id}   
-             tarea={tarea}
-             
-                />))}
+            {listaTarea.map((item)=>(
+               <Tarea 
+               edicion={edicion}
+               setEdicion={setEdicion}
+               key={item.id}
+               tarea={item}
+               listaTarea={listaTarea}
+               setListaTarea={setListaTarea}
+               setDescripcion={setDescripcion}
+               setId={setId}
+               id={id}
+               descripcion={descripcion}
+               />
+            ))}
         </ul>
     </div>)
 }

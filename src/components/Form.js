@@ -1,31 +1,39 @@
 import React from "react";
 
-const Form = ({setInputText,tareas,setTareas,inputText}) =>{
+const Form = ({descripcion,setDescripcion,listaTarea,setListaTarea,edicion}) =>{
 
-    const agregarInput = (e) =>{
-        setInputText(e.target.value);
-    }
-    
-    const agregarTarea = (e) =>{
+       
+    const agregarTarea = (e) =>
+    {
         e.preventDefault();
-        if (inputText===""){
-            alert("ingrese algo");
+        if (descripcion===""){
+            alert('ingrese algo')
         }
         else{
-            
-        setTareas([...tareas, {texto:inputText , completado:false , id: Math.random()*10000 ,editado:false}]);
-        setInputText("");
+        const tarea = {
+           descripcion,
+           completado:false,
+           id:Math.random()*10000,
+           editado:false
+        }
+
+        setListaTarea([...listaTarea,tarea]);
+        setDescripcion("");
         }
     }
 
-  
- 
+
+
     return(
         <div>
             <form className="form">
-                <input value={inputText} onChange={agregarInput} type="text" className="text" placeholder="Ingrese tarea"  required/>
+                <input
+                value={descripcion}
+                onChange={(e)=>{setDescripcion(e.target.value)}} 
+                type="text" className="text" placeholder="Ingrese tarea"  required/>
 
-                 <button className="submit" onClick={agregarTarea}><i className="fas fa-plus-square"></i></button> 
+                 {edicion ? "" : <button className="submit" 
+                 onClick={agregarTarea}><i className="fas fa-plus-square"></i></button>} 
   
              </form>
         </div>

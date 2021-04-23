@@ -1,33 +1,63 @@
 import React from "react";
 
 
-const Tarea = ({setTareas,tareas,tarea,setInputText, inputText}) => {
-    
-    const eliminarTarea = () => {
-         setTareas(tareas.filter((elem)=>elem.id !== tarea.id));
+const Tarea = ({edicion,tarea,listaTarea,setListaTarea,setDescripcion,setEdicion,setId,descripcion,id}) => {
+
+    const eliminarTarea = (id) =>{
+        const filtro = listaTarea.filter(item => item.id !== id)
+        setListaTarea(filtro)}
         
-    }
 
-    const completadoTarea = () => {
-        setTareas(tareas.map((elem) =>{
-            if (elem.id === tarea.id){
-                return {...elem, completado:!elem.completado}
+        const completadoTarea = () => {
+            setListaTarea(listaTarea.map((item) =>{
+                if (item.id === tarea.id){
+                    return {...item, completado:!item.completado}
+                }
+                return item;
+            }))
+        }
+
+        const editarTarea = (objeto) => {
+
+            if (objeto.completado){
+                return objeto;
             }
-            return elem;
-        }))
-    }
+            else
+            {
+            setDescripcion(objeto.descripcion);
+            setId(objeto.id)
+            setEdicion(true);
+            setListaTarea(listaTarea.map((item) =>{
+                if (item.id === tarea.id){
+                    return {...item, editado:!item.editado}
+                }
+                return item;
+            }))
+            }    
+        }
 
+        const terminarEdicion = (e) =>{
+            e.preventDefault()
 
+            const editado = listaTarea.map(item => item.id === id ? {descripcion,id,completado:false,editado:false} : item)
+            setListaTarea(editado);
+            setEdicion(false)
+            setDescripcion("")
+            
+        }
 
     return (
     <div className="contenedor-tarea">   
-        <li className={`item-tareas ${tarea.completado ? "completado" : ""}`}>{tarea.texto}</li> 
+        
+        <li className={`item-tareas ${tarea.completado ? "completado" : ""}`}>{tarea.descripcion}</li> 
 
         <button onClick={completadoTarea} className={`btn-completado ${tarea.completado ? "completado-boton" : ""}`}><i className="fas fa-check"></i></button>
 
-        <button className="btn-editar"><i className="fas fa-edit"></i></button>
+        {edicion ? <button onClick={(e)=>{terminarEdicion(e)}}
+        className={`btn-editar ${tarea.editado ? "editado" : ""}`}>
+        <i className="fas fa-edit"></i></button> : <button onClick={()=>{editarTarea(tarea)}}className="btn-editar"><i className="fas fa-edit"></i></button>}
 
-        <button onClick={eliminarTarea} className="btn-eliminar"><i className="fas fa-trash"></i></button>
+        <button onClick={()=>{eliminarTarea(tarea.id)}}className="btn-eliminar"><i className="fas fa-trash"></i></button>
 
         
     </div>
