@@ -80,7 +80,7 @@ header {
   margin:10px;
   padding:0 10px;
   border-radius: 5px;
-  word-wrap: break-word; 
+  overflow-wrap: break-word; 
 }
 
 .btn-completado , .btn-eliminar , .btn-editar {
@@ -107,6 +107,31 @@ header {
 
 .editando {
   background-color: aquamarine;
+}
+
+
+@media screen and (max-width:768px) {
+
+  .item-tareas{
+    display: block;
+    width:60%; 
+  }
+
+
+  .form .text{
+    display: block;
+    width: 70%;
+
+  }
+
+  .btn-completado , .btn-eliminar , .btn-editar {
+    width: 9%;
+  }
+
+  .form .submit{
+    width: 15%;
+  }
+
 }
 
 
