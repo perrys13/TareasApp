@@ -83,7 +83,7 @@ header {
   word-wrap: break-word; 
 }
 
-.btn-completado , .btn-eliminar {
+.btn-completado , .btn-eliminar , .btn-editar {
   border-radius: 50px;
   width: 5%;
   margin:10px 2px;
@@ -103,6 +103,10 @@ header {
 .completado{
   text-decoration: line-through;
   opacity: 0.5;
+}
+
+.editando {
+  background-color: aquamarine;
 }
 
 

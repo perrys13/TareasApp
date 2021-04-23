@@ -1,14 +1,14 @@
 import React from "react";
 
 
-const Tarea = ({texto,setTareas,tareas,tarea}) =>{
+const Tarea = ({setTareas,tareas,tarea,setInputText, inputText}) => {
     
-    const eliminarTareaHandler = () => {
+    const eliminarTarea = () => {
          setTareas(tareas.filter((elem)=>elem.id !== tarea.id));
         
     }
 
-    const completadoTareaHandler = () => {
+    const completadoTarea = () => {
         setTareas(tareas.map((elem) =>{
             if (elem.id === tarea.id){
                 return {...elem, completado:!elem.completado}
@@ -16,16 +16,20 @@ const Tarea = ({texto,setTareas,tareas,tarea}) =>{
             return elem;
         }))
     }
-    
-    
-    
+
+
+
     return (
     <div className="contenedor-tarea">   
-        <li className={`item-tareas ${tarea.completado ? "completado" : ""}`}>{texto}</li> 
+        <li className={`item-tareas ${tarea.completado ? "completado" : ""}`}>{tarea.texto}</li> 
 
-        <button onClick={completadoTareaHandler} className={`btn-completado ${tarea.completado ? "completado-boton" : ""}`}><i className="fas fa-check"></i></button>
+        <button onClick={completadoTarea} className={`btn-completado ${tarea.completado ? "completado-boton" : ""}`}><i className="fas fa-check"></i></button>
 
-        <button onClick={eliminarTareaHandler} className="btn-eliminar"><i className="fas fa-trash"></i></button>
+        <button className="btn-editar"><i className="fas fa-edit"></i></button>
+
+        <button onClick={eliminarTarea} className="btn-eliminar"><i className="fas fa-trash"></i></button>
+
+        
     </div>
     )
 }
