@@ -8,13 +8,19 @@ const Tarea = ({edicion,tarea,listaTarea,setListaTarea,setDescripcion,setEdicion
         setListaTarea(filtro)}
         
 
-        const completadoTarea = () => {
+        const completadoTarea = () => 
+        {
+            if (edicion){
+                return 
+            }
+            else{
             setListaTarea(listaTarea.map((item) =>{
                 if (item.id === tarea.id){
                     return {...item, completado:!item.completado}
                 }
                 return item;
             }))
+            }
         }
 
         const editarTarea = (objeto) => {
@@ -49,7 +55,7 @@ const Tarea = ({edicion,tarea,listaTarea,setListaTarea,setDescripcion,setEdicion
     return (
     <div className="contenedor-tarea">   
         
-        <li className={`item-tareas ${tarea.completado ? "completado" : ""}`}>{tarea.descripcion}</li> 
+        <li className={`item-tareas ${tarea.completado ?"completado" : edicion ? "item-tareas-editado" : ""}`}>{tarea.descripcion}</li> 
 
         <button onClick={completadoTarea} className={`btn-completado ${tarea.completado ? "completado-boton" : ""}`}><i className="fas fa-check"></i></button>
 

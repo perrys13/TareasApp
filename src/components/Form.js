@@ -22,8 +22,6 @@ const Form = ({descripcion,setDescripcion,listaTarea,setListaTarea,edicion}) =>{
         }
     }
 
-
-
     return(
         <div>
             <form className="form">
